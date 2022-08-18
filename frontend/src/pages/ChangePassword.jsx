@@ -28,9 +28,9 @@ const ChangePassword = () => {
         toast.error(message)
       }
   
-    //   if (isSuccess || user) {
-    //     navigate('/')
-    //   }
+      if (isSuccess ) {
+        navigate('/')
+      }
   
       dispatch(reset())
     }, [user, isError, isSuccess, message, navigate, dispatch])

@@ -105,6 +105,7 @@ const getUser = asynchandler(async(req,res) => {
 
 const changePassword = asynchandler(async(req,res) => {
     const {email,oldPassword,newPassword} = req.body
+    console.log(email)
 
     const user = await User.findOne({email})
 
@@ -121,6 +122,7 @@ const changePassword = asynchandler(async(req,res) => {
             name:user.name,
             email:user.email,
             phone:user.phone,
+            token: generateToken(user._id)
         })
     }
     else{
