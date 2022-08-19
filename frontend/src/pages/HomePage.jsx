@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import { useSelector,useDispatch } from 'react-redux'
 
 function Copyright() {
   return (
@@ -18,7 +19,9 @@ function Copyright() {
   );
 }
 
-export default function StickyFooter() {
+export default function HomePage() {
+  const {user} =useSelector((state) => state.auth)
+
   return (
     
     
@@ -35,10 +38,23 @@ export default function StickyFooter() {
         <Typography variant="h2" component="h1" gutterBottom>
           DASHBOARD
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
+        {user?(
+          <>
+          <Typography variant="h5" component="h2" gutterBottom>
           {'No Data Available'}
           {''}
         </Typography>
+          </>
+
+        ):(
+          <>
+          <Typography variant="h5" component="h2" gutterBottom>
+          {'Not logged in'}
+          {''}
+        </Typography>
+          </>
+        )}
+        
         <Typography variant="body1"></Typography>
       </Container>
       <Box
